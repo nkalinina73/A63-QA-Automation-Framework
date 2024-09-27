@@ -21,6 +21,6 @@ public class LoginTests extends BaseTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
-        // learning to fork repository
+        // Friday Sept 27 changes
     }
 }
