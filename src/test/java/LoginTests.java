@@ -21,6 +21,7 @@ public class LoginTests extends BaseTest {
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
-        // changes for Conflict 1
+ merge-conflict-1
+  
     }
 }
