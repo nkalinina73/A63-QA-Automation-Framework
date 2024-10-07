@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -13,8 +14,10 @@ import java.time.Duration;
 
 public class BaseTest {
 
+
     public WebDriver driver = null;
     public String url =  "https://qa.koel.app/";
+
 
     @BeforeSuite
     static void setupClass() {
@@ -23,7 +26,9 @@ public class BaseTest {
 
     @BeforeMethod
     public void launchClass(){
+
         // added ChromeOptions argument to fix websocket error
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -41,6 +46,7 @@ public class BaseTest {
     public void navigateToPage() {
         driver.get(url);
     }
+
 
     public void selectPlaylist() throws InterruptedException {
         WebElement playList = driver.findElement(By.cssSelector("#songResultsWrapper .playlist"));
@@ -103,4 +109,30 @@ public class BaseTest {
         System.out.println("Notification: " + notificationPopUp.getText());
         Assert.assertEquals(notificationPopUp.getText(), "Added 1 song into \"NK_PL.\"");
     }
+
+    public void provideEmail(String email) {
+        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        emailField.clear();
+        emailField.sendKeys(email);
+    }
+
+    public void providePassword(String password) {
+        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        passwordField.clear();
+        passwordField.sendKeys(password);
+
+    }
+
+    public void clickLoginButton() {
+        WebElement buttonSubmit = driver.findElement(By.cssSelector("button[type='submit']"));
+        buttonSubmit.click();
+    }
+
+    public void clickAvatarIcon() {
+        WebElement avatarIcon = driver.findElement(By.cssSelector("img.avatar"));
+        avatarIcon.click();
+
+    }
+
+
 }
