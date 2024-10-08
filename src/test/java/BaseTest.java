@@ -13,6 +13,7 @@ import java.time.Duration;
 
 public class BaseTest {
 
+
     public WebDriver driver = null;
     public String url =  "https://qa.koel.app/";
 
@@ -23,13 +24,17 @@ public class BaseTest {
 
     @BeforeMethod
     public void launchClass(){
+
         // added ChromeOptions argument to fix websocket error
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+
+
     }
 
     @AfterMethod
@@ -40,6 +45,7 @@ public class BaseTest {
     public void navigateToPage() {
         driver.get(url);
     }
+
 
     public void providePassword(String password) {
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
@@ -79,4 +85,6 @@ public class BaseTest {
         songImage.isDisplayed();
 
     }
+
+  
 }
