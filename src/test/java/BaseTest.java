@@ -9,6 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,9 +28,8 @@ public class BaseTest {
 
 
     public WebDriver driver = null;
-
-  
     public String url = null;
+    public WebDriverWait wait = null;
 
   
 
@@ -49,6 +51,8 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         url = BaseURL;
 
 
@@ -66,9 +70,9 @@ public class BaseTest {
     }
 
     public void clickLoginButton() throws InterruptedException {
-        WebElement buttonSubmit = driver.findElement(cssSelector("button[type='submit']"));
+
+        WebElement buttonSubmit = wait.until(ExpectedConditions.elementToBeClickable(cssSelector("button[type='submit']")));
         buttonSubmit.click();
-        Thread.sleep(2000);
 
     }
 
@@ -86,7 +90,6 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
 
-<<<<<
     public void clickOnPlaylist() throws InterruptedException {
         // a[href='#!/playlist/99663']
         WebElement playList = driver.findElement(By.linkText("NK_PL2"));
@@ -103,7 +106,6 @@ public class BaseTest {
 
     }
 
-<<<<<<
     public void createNewPlaylist() throws InterruptedException {
         // #playlists .fa.fa-plus-circle.create
         WebElement newPlaylistButton = driver.findElement(cssSelector("#playlists .fa.fa-plus-circle.create"));
