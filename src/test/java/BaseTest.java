@@ -112,10 +112,9 @@ public class BaseTest {
         Thread.sleep(4000);
     }
 
-    public void deletedPlaylistNotification() {
+    public String deletedPlaylistNotification() {
         // .alertify-logs.top.right
-        WebElement deletedPL = driver.findElement(cssSelector(".alertify-logs.top.right"));
-        System.out.println("Notification: " + deletedPL.getText());
-        Assert.assertEquals(deletedPL.getText(), "Deleted playlist \"NK_PL2.\"");
+        WebElement deleteNotification = driver.findElement(cssSelector(".alertify-logs.top.right"));
+        return deleteNotification.getText();
     }
 }
