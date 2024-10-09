@@ -13,7 +13,7 @@ public class Homework17 extends BaseTest{
         clickFirstSong();
         clickAddToButton();
         selectPlaylist();
-        getAddToPlaylistSuccessMsg()
+        getAddToPlaylistSuccessMsg();
 
 
     }
