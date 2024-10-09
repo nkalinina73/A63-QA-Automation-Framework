@@ -1,10 +1,13 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,12 +19,17 @@ import java.time.Duration;
 
 import static org.openqa.selenium.By.*;
 
+import java.time.Duration;
+
 public class BaseTest {
 
 
     public WebDriver driver = null;
+
+  
     public String url = null;
 
+  
 
     @BeforeSuite
     static void setupClass() {
@@ -30,6 +38,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
+
     @Parameters({"BaseURL"})
     public void launchClass(String BaseURL) {
 
@@ -42,10 +51,12 @@ public class BaseTest {
         driver.manage().window().maximize();
         url = BaseURL;
 
+
     }
 
     @AfterMethod
     public void closeBrowser() {
+
 
         driver.quit();
     }
@@ -63,16 +74,19 @@ public class BaseTest {
 
     public void providePassword(String password) {
         WebElement passwordField = driver.findElement(cssSelector("input[type='password']"));
+
         passwordField.clear();
         passwordField.sendKeys(password);
     }
 
     public void provideEmail(String email) {
         WebElement emailField = driver.findElement(cssSelector("input[type='email']"));
+
         emailField.clear();
         emailField.sendKeys(email);
     }
 
+<<<<<
     public void clickOnPlaylist() throws InterruptedException {
         // a[href='#!/playlist/99663']
         WebElement playList = driver.findElement(By.linkText("NK_PL2"));
@@ -84,10 +98,12 @@ public class BaseTest {
         // .del.btn-delete-playlist
         WebElement deleteBtton = driver.findElement(cssSelector(".del.btn-delete-playlist"));
         deleteBtton.click();
+
         Thread.sleep(3000);
 
     }
 
+<<<<<<
     public void createNewPlaylist() throws InterruptedException {
         // #playlists .fa.fa-plus-circle.create
         WebElement newPlaylistButton = driver.findElement(cssSelector("#playlists .fa.fa-plus-circle.create"));
@@ -117,4 +133,5 @@ public class BaseTest {
         WebElement deleteNotification = driver.findElement(cssSelector(".alertify-logs.top.right"));
         return deleteNotification.getText();
     }
+
 }
