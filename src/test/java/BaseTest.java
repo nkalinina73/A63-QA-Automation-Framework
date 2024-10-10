@@ -1,17 +1,21 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 
+
 import org.openqa.selenium.Keys;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,12 +28,16 @@ import static org.openqa.selenium.By.*;
 
 import java.time.Duration;
 
+import java.time.Duration;
+
 public class BaseTest {
 
 
     public WebDriver driver = null;
+
     public String url = null;
     public WebDriverWait wait;
+
 
 
 
@@ -41,10 +49,12 @@ public class BaseTest {
 
     @BeforeMethod
 
+
     @Parameters({"BaseURL"})
     public void launchClass(String BaseURL) {
 
         // added ChromeOptions argument to fix websocket error
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -78,12 +88,14 @@ public class BaseTest {
 
     public void providePassword(String password) {
         WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(cssSelector("input[type='password']")));
+
         passwordField.clear();
         passwordField.sendKeys(password);
     }
 
     public void provideEmail(String email) {
         WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(cssSelector("input[type='email']")));
+
         emailField.clear();
         emailField.sendKeys(email);
     }
@@ -127,4 +139,32 @@ public class BaseTest {
         return deleteNotification.getText();
     }
 
+    public void clickLoginButton() throws InterruptedException {
+        WebElement buttonSubmit = driver.findElement(By.cssSelector("button[type='submit']"));
+        buttonSubmit.click();
+        Thread.sleep(2000);
+    }
+
+
+    public void clickNextSongButton() throws InterruptedException {
+        WebElement nextSongButton = driver.findElement(By.cssSelector("i.next.fa.fa-step-forward.control"));
+        nextSongButton.click();
+        Thread.sleep(3000);
+
+    }
+
+    public void clickPlayButton() throws InterruptedException {
+        WebElement nextSongButton = driver.findElement(By.cssSelector("span.play"));
+        nextSongButton.click();
+        Thread.sleep(3000);
+    }
+
+    public void validateSongIsPlaying() {
+        // #mainFooter img
+        WebElement songImage = driver.findElement(By.cssSelector("#mainFooter img"));
+        songImage.isDisplayed();
+
+    }
+
+ 
 }
