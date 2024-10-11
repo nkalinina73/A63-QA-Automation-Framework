@@ -33,7 +33,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchClass(){
+    public void launchClass(String BaseURL){
 
         // added ChromeOptions argument to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -44,19 +44,17 @@ public class BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         url = BaseURL;
 
-
-
     }
 
     @AfterMethod
     public void closeBrowser(){
+
         driver.quit();
     }
 
     public void navigateToPage() {
         driver.get(url);
     }
-
 
     public void providePassword(String password) {
         WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[type='password']")));
