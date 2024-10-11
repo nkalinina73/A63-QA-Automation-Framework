@@ -39,6 +39,11 @@ public class ProfileTest extends BaseTest{
 
     }
 
+    public void clickAvatarIcon() {
+        WebElement avatarIcon = driver.findElement(By.cssSelector("#userBadge img.avatar"));
+        avatarIcon.click();
+    }
+
     public void clickSaveButton() {
         WebElement saveButton = driver.findElement(By.cssSelector(".btn-submit"));
         saveButton.click();

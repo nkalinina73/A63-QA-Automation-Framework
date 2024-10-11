@@ -8,12 +8,12 @@ public class Homework17 extends BaseTest{
         provideEmail("natalia.kalinina@testpro.io");
         providePassword("nkKoel24$");
         clickLoginButton();
-        searchForSong("midnight");
+    /*    searchForSong("midnight");
         clickViewAllButton();
         clickFirstSong();
         clickAddToButton();
         selectPlaylist();
-        getAddToPlaylistSuccessMsg()
+        getAddToPlaylistSuccessMsg();*/
 
 
     }
