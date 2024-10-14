@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 public class Homework19 extends BaseTest  {
 
     @Test
-    public void removePlaylist() throws InterruptedException {
+    public void removePlaylist() {
 
         navigateToPage();
         provideEmail("natalia.kalinina@testpro.io");

@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import java.time.Duration;
+import java.util.UUID;
 
 import static org.openqa.selenium.By.cssSelector;
 
@@ -121,5 +122,29 @@ public class BaseTest {
         return deleteNotification.getText();
     }
 
-  
+
+    public void clickAvatarIcon() {
+        WebElement avatarIcon = driver.findElement(cssSelector("#userBadge img.avatar"));
+        avatarIcon.click();
+    }
+
+    public void clickSaveButton() {
+        WebElement saveButton = driver.findElement(cssSelector(".btn-submit"));
+        saveButton.click();
+    }
+
+    public void provideProfileName(String profileName) {
+        WebElement myPName = driver.findElement(cssSelector("#inputProfileName"));
+        myPName.clear();
+        myPName.sendKeys(profileName);
+    }
+
+    public void provideCurrentPassword(String currentPassword) {
+        WebElement myPassword = driver.findElement(cssSelector("#inputProfileCurrentPassword"));
+        myPassword.sendKeys(currentPassword);
+    }
+
+    public String generateRandomName() {
+        return UUID.randomUUID().toString().replace("-", "");
+    }
 }
