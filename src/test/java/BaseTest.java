@@ -24,6 +24,7 @@ public class BaseTest {
     public WebDriver driver = null;
     public String url =  null;
     public WebDriverWait wait = null;
+    public Actions actions = null;
 
 
     @BeforeSuite
@@ -33,7 +34,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchClass(){
+    public void launchClass(String BaseURL){
 
         // added ChromeOptions argument to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -43,8 +44,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         url = BaseURL;
-
-
+        actions = new Actions(driver);
 
     }
 
