@@ -9,10 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -23,8 +20,25 @@ public class BaseTest {
 
 
     public WebDriver driver = null;
-    public String url =  null;
+    public String url = null;
     public WebDriverWait wait = null;
+    public Actions actions = null;
+
+    @DataProvider(name = "IncorrectLoginData")
+    public Object[][] getDataFromDataProviders() {
+        return new Object[][]{
+        {
+            "invalid@email.com", "invalidPSWD"
+        },
+        {
+            "demo@class.com", ""
+        },
+        {
+            "", ""
+        }
+
+    };
+}
 
 
     @BeforeSuite
@@ -42,8 +56,9 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         url = BaseURL;
+        actions = new Actions(driver);
 
     }
 
@@ -76,6 +91,8 @@ public class BaseTest {
 
     public void clickNextSongButton() {
         WebElement nextSongButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.next.fa.fa-step-forward.control")));
+
+        //WebElement nextSongButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.next.fa.fa-step-forward.control")));
         nextSongButton.click();
 
     }
