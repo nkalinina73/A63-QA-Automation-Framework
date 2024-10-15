@@ -14,6 +14,7 @@ public class BasePage {
     WebDriver driver;
     WebDriverWait wait;
     Actions actions;
+    String url;
 
 
     public  BasePage (WebDriver givenDriver){
