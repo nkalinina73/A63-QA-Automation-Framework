@@ -82,24 +82,24 @@ public class BaseTest {
         buttonSubmit.click();
     }
 
-    public void clickNextSongButton() {
+/*    public void clickNextSongButton() {
         WebElement nextSongButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.next.fa.fa-step-forward.control")));
 
         //WebElement nextSongButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("i.next.fa.fa-step-forward.control")));
         nextSongButton.click();
 
-    }
-
+    }*/
+/*
     public void clickPlayButton() {
         WebElement nextSongButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.play")));
         nextSongButton.click();
-    }
+    }*/
 
-    public void validateSongIsPlaying() {
+/*    public void validateSongIsPlaying() {
         WebElement songImage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#mainFooter img")));
         songImage.isDisplayed();
 
-    }
+    }*/
     public void createNewPlaylist() {
         WebElement newPlaylistButton = wait.until(ExpectedConditions.elementToBeClickable(cssSelector("#playlists .fa.fa-plus-circle.create")));
         newPlaylistButton.click();
