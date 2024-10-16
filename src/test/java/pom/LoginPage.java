@@ -18,11 +18,7 @@ public class LoginPage extends BasePage {
     public void provideEmail(String email){ findElement(emailField).sendKeys(email);}
     public void providePassword(String password){ findElement(passwordField).sendKeys(password);}
     public void clickSubmit(){ findElement(submitBtn).click();}
-   /* public void login(){
-        provideEmail("natalia.kalinina@testpro.io");
-        providePassword("nkKoel24$");
-        clickSubmit();
-    }*/
+
 
 
 }

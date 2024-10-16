@@ -100,22 +100,22 @@ public class BaseTest {
         songImage.isDisplayed();
 
     }*/
-    public void createNewPlaylist() {
+/*    public void createNewPlaylist() {
         WebElement newPlaylistButton = wait.until(ExpectedConditions.elementToBeClickable(cssSelector("#playlists .fa.fa-plus-circle.create")));
         newPlaylistButton.click();
-    }
-    public void clickNewPlaylist() {
+    }*/
+/*    public void clickNewPlaylist() {
         WebElement newPlaylist = wait.until(ExpectedConditions.elementToBeClickable(cssSelector(" [data-testid='playlist-context-menu-create-simple']")));
         newPlaylist.click();
-    }
+    }*/
 
-    public void typeNameOfPlaylist(String name) {
+/*    public void typeNameOfPlaylist(String name) {
         WebElement namePLField = wait.until(ExpectedConditions.visibilityOfElementLocated(cssSelector(".create input[type='text']")));
         namePLField.clear();
         namePLField.sendKeys(name);
         Actions actions = new Actions(driver);
         actions.sendKeys(namePLField, Keys.RETURN).perform();
-    }
+    }*/
 
     public void clickOnPlaylist() {
         WebElement playList = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("NK_PL2")));
