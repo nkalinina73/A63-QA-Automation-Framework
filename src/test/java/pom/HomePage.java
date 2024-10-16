@@ -10,7 +10,7 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver givenDriver){
         super(givenDriver);
     }
-    
+
     By userAvatarIcon = By.cssSelector("img.avatar");
     By nextSongBtn = By.cssSelector("i.next.fa.fa-step-forward.control");
     By playBth = By.cssSelector("span.play");
@@ -27,6 +27,7 @@ public class HomePage extends BasePage {
 
     public WebElement getUserAvatar() {return findElement(userAvatarIcon);}
 }
+
     public void typeNameOfPlaylist(String name) {
         namePLField.clear();
         namePLField.sendKeys(name);
