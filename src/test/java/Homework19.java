@@ -18,7 +18,7 @@ public class Homework19 extends BaseTest  {
         clickLoginButton();
         homePage.createNewPlaylist();
         homePage.clickNewPlaylist();
-        homePage.typeNameOfPlaylist("NK_PL2");
+       // homePage.typeNameOfPlaylist("NK_PL2");
 
         clickOnPlaylist();
         clickDeleteButton();

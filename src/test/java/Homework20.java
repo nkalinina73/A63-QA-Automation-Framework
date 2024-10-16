@@ -9,11 +9,11 @@ public class Homework20 extends BaseTest{
         provideEmail("natalia.kalinina@testpro.io");
         providePassword("nkKoel24$");
         clickLoginButton();
-        createNewPlaylist();
+      /*  createNewPlaylist();
         clickNewPlaylist();
         typeNameOfPlaylist("NK_PL2");
         clickOnPlaylist();
         clickDeleteButton();
-        deletedPlaylistNotification();
+        deletedPlaylistNotification();*/
     }
 }

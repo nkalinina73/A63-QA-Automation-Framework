@@ -14,6 +14,7 @@ public class Homework18 extends BaseTest{
         provideEmail("natalia.kalinina@testpro.io");
         providePassword("nkKoel24$");
         clickLoginButton();
+        homePage.hoverOverNextSongButton();
         homePage.clickNextSongButton();
         homePage.clickPlayButton();
         homePage.validateSongIsPlaying();

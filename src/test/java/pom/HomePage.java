@@ -19,6 +19,9 @@ public class HomePage extends BasePage {
     By newPlaylist = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
     By namePLField = By.cssSelector(".create input[type='text']");
 
+    By playBtn = By.cssSelector("span.album-thumb");
+    public void hoverOverNextSongButton() {actions.moveToElement(findElement(playBtn)).perform();}
+
     public void clickNextSongButton() {findElement(nextSongBtn).click();}
     public void clickPlayButton(){findElement(playBth).click();}
     public void validateSongIsPlaying(){findElement(songImage).isDisplayed();}
@@ -28,9 +31,10 @@ public class HomePage extends BasePage {
     public WebElement getUserAvatar() {return findElement(userAvatarIcon);}
 }
 
+/*
     public void typeNameOfPlaylist(String name) {
         namePLField.clear();
         namePLField.sendKeys(name);
         Actions actions = new Actions(driver);
         actions.sendKeys(namePLField, Keys.RETURN).perform();
-    }
+    }*/
