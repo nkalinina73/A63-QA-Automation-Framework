@@ -117,20 +117,20 @@ public class BaseTest {
         actions.sendKeys(namePLField, Keys.RETURN).perform();
     }*/
 
-    public void clickOnPlaylist() {
+  /*  public void clickOnPlaylist() {
         WebElement playList = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("NK_PL2")));
         playList.click();
-    }
+    }*/
 
-    public void clickDeleteButton() {
+/*    public void clickDeleteButton() {
         WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(cssSelector(".del.btn-delete-playlist")));
         deleteButton.click();
-    }
+    }*/
 
-    public String deletedPlaylistNotification() {
+/*    public String deletedPlaylistNotification() {
         WebElement deleteNotification = wait.until(ExpectedConditions.visibilityOfElementLocated(cssSelector(".alertify-logs.top.right")));
         return deleteNotification.getText();
-    }
+    }*/
 
 
     public void clickAvatarIcon() {
