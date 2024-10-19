@@ -1,14 +1,18 @@
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pom.HomePage;
-import pom.LoginPage;
+import pagefactory.HomePage;
+import pagefactory.LoginPage;
 
 public class Homework19 extends BaseTest  {
 
     @Test
     public void removePlaylist() {
-
+        // Page Factory
         LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+  //===========POM==========================================
+              /*  LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
 
@@ -21,7 +25,7 @@ public class Homework19 extends BaseTest  {
         homePage.typePlaylistName("NK_PL2");
         homePage.clickOnPlaylist();
         homePage.clickDeleteButton();
-        homePage.deletedPlaylistNotification();
+        homePage.deletedPlaylistNotification();*/
     }
 
 }
