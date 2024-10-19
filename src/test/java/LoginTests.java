@@ -3,25 +3,33 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pom.HomePage;
-import pom.LoginPage;
+import pagefactory.HomePage;
+import pagefactory.LoginPage;
 
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     @Test
     public void loginValidCredentials() {
-
+        // Page Factory
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        //BaseTest baseTest = new BaseTest();
+
 
         navigateToPage();
-        loginPage.provideEmail("natalia.kalinina@testpro.io");
+        loginPage.provideEmail("natalia.kalinina@testpro.io").providePassword("nkKoel24$").clickSubmit();
+
+        Assert.assertTrue(homePage.isAvatarDisplayed());
+
+//========POM===========================================================
+
+    /*    LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+       loginPage.provideEmail("natalia.kalinina@testpro.io");
         loginPage.providePassword("nkKoel24$");
         loginPage.clickSubmit();
 
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());*/
 
 // ===================================================================================
 //      Added ChromeOptions argument below to fix websocket error
