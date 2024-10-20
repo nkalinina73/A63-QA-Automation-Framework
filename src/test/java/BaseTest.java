@@ -5,7 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -19,7 +23,7 @@ import static org.openqa.selenium.By.cssSelector;
 public class BaseTest {
 
 
-    public WebDriver driver = null;
+    public static WebDriver driver = null;
     public String url = null;
     public WebDriverWait wait = null;
     public Actions actions = null;
@@ -36,6 +40,7 @@ public class BaseTest {
 
     @BeforeSuite
     static void setupClass() {
+        //WebDriverManager.firefoxdriver().setup();
         WebDriverManager.chromedriver().setup();
     }
 
@@ -47,12 +52,33 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
-        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver(options);
+        //driver = new FirefoxDriver();
+        driver = pickBrowser(System.getProperty("browser"));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         url = BaseURL;
         actions = new Actions(driver);
 
+    }
+
+    public static WebDriver pickBrowser(String browser) {
+       // Grid setup
+        /* DesiredCapabilities caps = new DesiredCapabilities();
+        String gridURL = "";*/
+        switch (browser){
+            case "firefox": //gradle clean test -Dbrowser=firefox
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+
+            case "MicrosoftEdge"://gradle clean test -Dbrowser=MicrosoftEdge
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--remote-allow-origins=*");
+                return driver = new EdgeDriver(edgeOptions);
+        }
+
+        return null;
     }
 
     @AfterMethod
