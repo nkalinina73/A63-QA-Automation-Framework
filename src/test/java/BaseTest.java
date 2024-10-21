@@ -10,11 +10,14 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.time.Duration;
 import java.util.UUID;
 
@@ -46,7 +49,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void launchClass(String BaseURL){
+    public void launchClass(String BaseURL) throws MalformedURLException {
 
         // added ChromeOptions argument to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -62,10 +65,11 @@ public class BaseTest {
 
     }
 
-    public static WebDriver pickBrowser(String browser) {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
        // Grid setup
-        /* DesiredCapabilities caps = new DesiredCapabilities();
-        String gridURL = "";*/
+        DesiredCapabilities caps = new DesiredCapabilities();
+        String gridURL = "http://192.168.11.20:4444";
+
         switch (browser){
             case "firefox": //gradle clean test -Dbrowser=firefox
                 WebDriverManager.firefoxdriver().setup();
@@ -76,9 +80,27 @@ public class BaseTest {
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
                 return driver = new EdgeDriver(edgeOptions);
+
+            case "grid-edge":
+                caps.setCapability("browserName", "MicrosoftEdge");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-firefox":
+                caps.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-chrome":
+                caps.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+            default:
+                WebDriverManager.chromiumdriver().setup();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                return driver = new ChromeDriver(chromeOptions);
+
+
         }
 
-        return null;
     }
 
     @AfterMethod
